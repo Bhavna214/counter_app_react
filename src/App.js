@@ -1,23 +1,31 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
 
 function App() {
+  const [num, setNum] = useState(0)
+
+  const Incr = () => {
+    setNum(num+1)
+  }
+
+  const Decr = () => {
+    if(num>0){
+      setNum(num-1)
+    }
+    else{
+      alert("Zero Limit Reached!")
+    }
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="main-div">
+      <h1>React Counter App</h1>
+      <div className='main'>
+        <h1>{num}</h1>
+        <div className="buttons">
+          <button className='item' onClick={Incr}>Increment</button>
+          <button className='item' onClick={Decr}>Decrement</button>
+        </div>
+      </div>
     </div>
   );
 }
